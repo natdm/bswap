@@ -25,3 +25,7 @@ Enter the character to swap the current buffer and the selected buffer. The curs
 NavBuffer will do the exact same as SwapBuffer, except it will send you to that buffer and not swap the contents.
 
 ![Nav Example](/images/nav.gif)
+
+## Credit where credit is due
+
+A lot of this is borrowed from some useful functionality I liked from [Coc-Explorer](https://github.com/weirongxu/coc-explorer)
