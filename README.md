@@ -4,13 +4,14 @@ bswap.vim gives the ability to easily rearrange or navigate buffers in split win
 
 *By default, nothing is mapped for you.* Feel free to call the functions or map to your own mappings
 
-The exported functions are `:SwapBuffer` and `:NavBuffer`.
+The exported functions are `:SwapBuffer`, `:NavBuffer`, and `:DelteBuffer`.
 
 ## Example mapping
 
 ```vim
 nnoremap <leader>ne :NavBuffer<CR>
 nnoremap <leader>nn :SwapBuffer<CR>
+nnoremap <leader>nd :DeleteBuffer<CR>
 ```
 
 ## `SwapBuffer()`
@@ -25,6 +26,10 @@ Enter the character to swap the current buffer and the selected buffer. The curs
 NavBuffer will do the exact same as SwapBuffer, except it will send you to that buffer and not swap the contents.
 
 ![Nav Example](/images/nav.gif)
+
+## `DeleteBuffer()`
+
+DeleteBuffer is a convenience wrapper around `:bdelete`. It labels all the open windows except the current one, and you select the one in which to delete.
 
 ## Options
 
