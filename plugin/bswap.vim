@@ -40,7 +40,7 @@ function! bswap#exec(swap) abort
 		endif
 		let char_idx_mapto_winnr[char_idx] = winnr
 		let char = s:select_wins_chars[char_idx]
-		let statusline = printf('%s %s %s', repeat('-', winwidth(winnr)/2-2), char, repeat('-', winwidth(winnr)/2-2))
+		let statusline = printf('%%#Search#%s %s', repeat(' ', winwidth(winnr)/2-1), char)
 		call setwinvar(winnr, '&statusline', statusline)
 		let char_idx += 1
 	endfor
