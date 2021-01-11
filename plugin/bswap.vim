@@ -17,6 +17,16 @@ function s:store_statusline(store, winnr) abort
 	let a:store[a:winnr] = getwinvar(a:winnr, '&statusline')
 endfunction
 
+function! s:echo_msg(msg) abort
+	echohl Question
+	echon a:msg . ": "
+	echohl None
+endfunction
+
+function! DeleteBuffer()
+	call bswap#exec(2)
+endfunction
+
 function! SwapBuffer()
 	call bswap#exec(1)
 endfunction
@@ -56,7 +66,14 @@ function! bswap#exec(swap) abort
 		redraw!
 		let select_winnr = -1
 		while 1
-			echo 'Select buffer'
+			if a:swap ==# 1
+				call s:echo_msg('Select buffer to swap with')
+			elseif a:swap ==# 0
+				call s:echo_msg('Select buffer to move to')
+			else
+				call s:echo_msg('Select buffer to close')
+			endif
+
 			let nr = getchar()
 			if nr == 27 "ESC
 				call s:restore_statuslines(store)
@@ -71,7 +88,7 @@ function! bswap#exec(swap) abort
 		call s:restore_statuslines(store)
 		" move to selected window
 		exe select_winnr . "wincmd w" 
-		if a:swap
+		if a:swap ==# 1
 			let marked_buf = bufnr("%")
 			let marked_line = line(".")
 			let marked_col = col(".")
@@ -79,9 +96,14 @@ function! bswap#exec(swap) abort
 			exe curr_num . "wincmd w"
 			call cursor(curr_line, curr_col)	
 			exe 'hide buf' marked_buf
+		elseif a:swap ==# 2
+			let marked_buf = bufnr("%")
+			exe 'bdelete' marked_buf
 		endif
+		echon 'Done'
 	endif
 endfunction
 
 command! -n=0 -bar SwapBuffer :call SwapBuffer()
 command! -n=0 -bar NavBuffer :call NavBuffer()
+command! -n=0 -bar DeleteBuffer :call DeleteBuffer()
