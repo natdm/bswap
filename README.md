@@ -31,6 +31,8 @@ NavBuffer will do the exact same as SwapBuffer, except it will send you to that 
 
 DeleteBuffer is a convenience wrapper around `:bdelete`. It labels all the open windows except the current one, and you select the one in which to delete.
 
+![Del example](/images/del.gif)
+
 ## Options
 
 Just one option, `g:bswap_color`. Look at `:so $VIMRUNTIME/syntax/hitest.vim` and select a color to change it to if the default does not suit you. 
