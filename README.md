@@ -4,7 +4,7 @@ bswap.vim gives the ability to easily rearrange or navigate buffers in split win
 
 *By default, nothing is mapped for you.* Feel free to call the functions or map to your own mappings
 
-The exported functions are `:SwapBuffer`, `:NavBuffer`, and `:DelteBuffer`.
+The exported functions are `:SwapBuffer`, `:NavBuffer`, and `:DeleteBuffer`.
 
 ## Example mapping
 
