@@ -26,6 +26,12 @@ NavBuffer will do the exact same as SwapBuffer, except it will send you to that 
 
 ![Nav Example](/images/nav.gif)
 
+## Options
+
+Just one option, `g:bswap_color`. Look at `:so $VIMRUNTIME/syntax/hitest.vim` and select a color to change it to if the default does not suit you. 
+Currently, it's set to "Search". Override it with `let g:bswap_color = "SomeOtherColor"`
+
 ## Credit where credit is due
 
 A lot of this is borrowed from some useful functionality I liked from [Coc-Explorer](https://github.com/weirongxu/coc-explorer)
+

@@ -4,6 +4,9 @@ endif
 
 let s:select_wins_chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
+" add other colors from :so $VIMRUNTIME/syntax/hitest.vim as desired
+let g:bswap_color = "Search"
+
 function! s:restore_statuslines(store) abort
 	for winnr in keys(a:store)
 		call setwinvar(winnr, '&statusline', a:store[winnr])
@@ -40,7 +43,7 @@ function! bswap#exec(swap) abort
 		endif
 		let char_idx_mapto_winnr[char_idx] = winnr
 		let char = s:select_wins_chars[char_idx]
-		let statusline = printf('%%#Search#%s %s', repeat(' ', winwidth(winnr)/2-1), char)
+		let statusline = printf('%%#%s#%s %s', g:bswap_color, repeat(' ', winwidth(winnr)/2-1), char)
 		call setwinvar(winnr, '&statusline', statusline)
 		let char_idx += 1
 	endfor
